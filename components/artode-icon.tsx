@@ -54,7 +54,9 @@ export const ArtodeIcon: React.FC<ArtodeIconProps> = ({
         maskCtx.scale(scale, scale);
 
         // Center the path if needed (optional refinement could go here)
-        maskCtx.fill(path);
+        // Center the path if needed (optional refinement could go here)
+        // Use evenodd rule to handle complex paths with holes (like X or WhatsApp)
+        maskCtx.fill(path, "evenodd");
 
         const maskData = maskCtx.getImageData(0, 0, size, size).data;
 

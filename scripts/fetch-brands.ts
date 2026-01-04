@@ -39,14 +39,14 @@ const ICONS_TO_FETCH: Record<string, string> = {
     "sqlite": "SQLite",
 
     // DevOps/Cloud
-    "amazonwebservices": "AWS",
-    "microsoftazure": "Azure",
+    "amazonaws": "AWS", // Fixed slug
+    "azuredevops": "Azure", // or 'microsoftazure' often works but simpler might be better. Let's try 'microsoftazure' key again correctly if simple-icons has it. Actually 'azure' might not exist directly.
     "googlecloud": "GCP",
     "kubernetes": "Kubernetes",
     "docker": "Docker",
 
     // Tools
-    "visualstudiocode": "VS Code",
+    "visualstudiocode": "VS Code", // This slug should be correct, maybe update logic to fuzzy find?
     "git": "Git",
     "bun": "Bun",
     "pnpm": "PNPM",
@@ -61,6 +61,19 @@ const ICONS_TO_FETCH: Record<string, string> = {
     "linkedin": "LinkedIn",
     "instagram": "Instagram",
     "openai": "OpenAI",
+    "behance": "Behance",
+    "medium": "Medium",
+    "x": "X", // X (formerly Twitter)
+    "twitter": "Twitter", // Legacy Twitter logo if needed, or X
+    "twitch": "Twitch",
+    "tiktok": "TikTok",
+    "pinterest": "Pinterest",
+    "reddit": "Reddit",
+    "whatsapp": "WhatsApp",
+    "telegram": "Telegram",
+
+
+    "dot-net": ".NET",
 
     // Existing ones to re-validate or just ensure we have
     "github": "GitHub",
@@ -76,7 +89,7 @@ const ICONS_TO_FETCH: Record<string, string> = {
     "linux": "Linux",
     "figma": "Figma",
     "gitlab": "GitLab",
-    "x": "Twitter", // X / Twitter
+
 };
 
 // Ensure paths.json exists

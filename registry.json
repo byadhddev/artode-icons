@@ -765,6 +765,201 @@
           "type": "registry:ui"
         }
       ]
+    },
+    {
+      "name": "behance",
+      "type": "registry:ui",
+      "registryDependencies": [
+        "artode-icon"
+      ],
+      "dependencies": [],
+      "devDependencies": [],
+      "files": [
+        {
+          "path": "behance.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "medium",
+      "type": "registry:ui",
+      "registryDependencies": [
+        "artode-icon"
+      ],
+      "dependencies": [],
+      "devDependencies": [],
+      "files": [
+        {
+          "path": "medium.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "twitch",
+      "type": "registry:ui",
+      "registryDependencies": [
+        "artode-icon"
+      ],
+      "dependencies": [],
+      "devDependencies": [],
+      "files": [
+        {
+          "path": "twitch.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "tiktok",
+      "type": "registry:ui",
+      "registryDependencies": [
+        "artode-icon"
+      ],
+      "dependencies": [],
+      "devDependencies": [],
+      "files": [
+        {
+          "path": "tiktok.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "pinterest",
+      "type": "registry:ui",
+      "registryDependencies": [
+        "artode-icon"
+      ],
+      "dependencies": [],
+      "devDependencies": [],
+      "files": [
+        {
+          "path": "pinterest.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "reddit",
+      "type": "registry:ui",
+      "registryDependencies": [
+        "artode-icon"
+      ],
+      "dependencies": [],
+      "devDependencies": [],
+      "files": [
+        {
+          "path": "reddit.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "whatsapp",
+      "type": "registry:ui",
+      "registryDependencies": [
+        "artode-icon"
+      ],
+      "dependencies": [],
+      "devDependencies": [],
+      "files": [
+        {
+          "path": "whatsapp.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "telegram",
+      "type": "registry:ui",
+      "registryDependencies": [
+        "artode-icon"
+      ],
+      "dependencies": [],
+      "devDependencies": [],
+      "files": [
+        {
+          "path": "telegram.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "x",
+      "type": "registry:ui",
+      "registryDependencies": [
+        "artode-icon"
+      ],
+      "dependencies": [],
+      "devDependencies": [],
+      "files": [
+        {
+          "path": "x.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "java",
+      "type": "registry:ui",
+      "registryDependencies": [
+        "artode-icon"
+      ],
+      "dependencies": [],
+      "devDependencies": [],
+      "files": [
+        {
+          "path": "java.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "csharp",
+      "type": "registry:ui",
+      "registryDependencies": [
+        "artode-icon"
+      ],
+      "dependencies": [],
+      "devDependencies": [],
+      "files": [
+        {
+          "path": "csharp.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "aws",
+      "type": "registry:ui",
+      "registryDependencies": [
+        "artode-icon"
+      ],
+      "dependencies": [],
+      "devDependencies": [],
+      "files": [
+        {
+          "path": "aws.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "azure",
+      "type": "registry:ui",
+      "registryDependencies": [
+        "artode-icon"
+      ],
+      "dependencies": [],
+      "devDependencies": [],
+      "files": [
+        {
+          "path": "azure.tsx",
+          "type": "registry:ui"
+        }
+      ]
     }
   ]
 }

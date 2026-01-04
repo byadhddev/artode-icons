@@ -363,5 +363,96 @@ export const components: ComponentDefinition[] = [
     registryDependencies: ["artode-icon"],
     dependencies: [],
     type: "registry:ui"
+  },
+  {
+    name: "behance",
+    path: path.join(__dirname, "../icons/behance.tsx"),
+    registryDependencies: ["artode-icon"],
+    dependencies: [],
+    type: "registry:ui"
+  },
+  {
+    name: "medium",
+    path: path.join(__dirname, "../icons/medium.tsx"),
+    registryDependencies: ["artode-icon"],
+    dependencies: [],
+    type: "registry:ui"
+  },
+  {
+    name: "twitch",
+    path: path.join(__dirname, "../icons/twitch.tsx"),
+    registryDependencies: ["artode-icon"],
+    dependencies: [],
+    type: "registry:ui"
+  },
+  {
+    name: "tiktok",
+    path: path.join(__dirname, "../icons/tiktok.tsx"),
+    registryDependencies: ["artode-icon"],
+    dependencies: [],
+    type: "registry:ui"
+  },
+  {
+    name: "pinterest",
+    path: path.join(__dirname, "../icons/pinterest.tsx"),
+    registryDependencies: ["artode-icon"],
+    dependencies: [],
+    type: "registry:ui"
+  },
+  {
+    name: "reddit",
+    path: path.join(__dirname, "../icons/reddit.tsx"),
+    registryDependencies: ["artode-icon"],
+    dependencies: [],
+    type: "registry:ui"
+  },
+  {
+    name: "whatsapp",
+    path: path.join(__dirname, "../icons/whatsapp.tsx"),
+    registryDependencies: ["artode-icon"],
+    dependencies: [],
+    type: "registry:ui"
+  },
+  {
+    name: "telegram",
+    path: path.join(__dirname, "../icons/telegram.tsx"),
+    registryDependencies: ["artode-icon"],
+    dependencies: [],
+    type: "registry:ui"
+  },
+  {
+    name: "x",
+    path: path.join(__dirname, "../icons/x.tsx"),
+    registryDependencies: ["artode-icon"],
+    dependencies: [],
+    type: "registry:ui"
+  },
+  {
+    name: "java",
+    path: path.join(__dirname, "../icons/java.tsx"),
+    registryDependencies: ["artode-icon"],
+    dependencies: [],
+    type: "registry:ui"
+  },
+  {
+    name: "csharp",
+    path: path.join(__dirname, "../icons/csharp.tsx"),
+    registryDependencies: ["artode-icon"],
+    dependencies: [],
+    type: "registry:ui"
+  },
+  {
+    name: "aws",
+    path: path.join(__dirname, "../icons/aws.tsx"),
+    registryDependencies: ["artode-icon"],
+    dependencies: [],
+    type: "registry:ui"
+  },
+  {
+    name: "azure",
+    path: path.join(__dirname, "../icons/azure.tsx"),
+    registryDependencies: ["artode-icon"],
+    dependencies: [],
+    type: "registry:ui"
   }
 ];

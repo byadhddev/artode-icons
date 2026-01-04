@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "csharp",
+  "type": "registry:ui",
+  "registryDependencies": [
+    "artode-icon"
+  ],
+  "dependencies": [],
+  "devDependencies": [],
+  "files": [
+    {
+      "path": "csharp.tsx",
+      "content": "\"use client\";\n\nimport { ArtodeIcon, type ArtodeIconProps } from \"@/components/artode-icon\";\n\nconst PATH = \"M11.7 6.756l.72-3.324h3.18l-.72 3.324h2.532l-.72 3.324h-2.532l-1.356 6.252h-3.18l1.356-6.252H8.448l-.72 3.324h-3.18l.72-3.324H2.736l.72-3.324h2.532l1.356-6.252h3.18l-1.356 6.252h2.532zm-2.532 3.324l-1.356 6.252h2.532l1.356-6.252h-2.532z\";\n\nexport const CIcon = ({ className, size, drawType = \"fill\", ...props }: Omit<ArtodeIconProps, \"path\" | \"drawType\"> & { drawType?: \"fill\" | \"stroke\" }) => {\n  return (\n    <ArtodeIcon\n      path={PATH}\n      className={className}\n      size={size}\n      drawType={drawType}\n      {...props}\n    />\n  );\n};\n",
+      "type": "registry:ui"
+    }
+  ]
+}

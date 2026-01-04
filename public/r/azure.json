@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "azure",
+  "type": "registry:ui",
+  "registryDependencies": [
+    "artode-icon"
+  ],
+  "dependencies": [],
+  "devDependencies": [],
+  "files": [
+    {
+      "path": "azure.tsx",
+      "content": "\"use client\";\n\nimport { ArtodeIcon, type ArtodeIconProps } from \"@/components/artode-icon\";\n\nconst PATH = \"M5.72 17.58L10.98 4h3.69l-4.58 13.6L5.72 17.6zm8.8 1.48l1.68-4.32 7.37 5.25H14.52z\";\n\nexport const AzureIcon = ({ className, size, drawType = \"fill\", ...props }: Omit<ArtodeIconProps, \"path\" | \"drawType\"> & { drawType?: \"fill\" | \"stroke\" }) => {\n  return (\n    <ArtodeIcon\n      path={PATH}\n      className={className}\n      size={size}\n      drawType={drawType}\n      {...props}\n    />\n  );\n};\n",
+      "type": "registry:ui"
+    }
+  ]
+}
