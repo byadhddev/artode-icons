@@ -8,7 +8,7 @@ const paths = JSON.parse(fs.readFileSync(pathsPath, "utf8"));
 // Ensure icons directory exists
 const iconsDir = path.join(process.cwd(), "icons");
 if (!fs.existsSync(iconsDir)) {
-    fs.mkdirSync(iconsDir, { recursive: true });
+  fs.mkdirSync(iconsDir, { recursive: true });
 }
 
 // Registry components list
@@ -16,48 +16,54 @@ const registryComponents = [];
 
 // 1. Add ArtodeIcon base component
 registryComponents.push({
-    name: "artode-icon",
-    path: 'path.join(__dirname, "../components/artode-icon.tsx")',
-    registryDependencies: [],
-    dependencies: [],
-    type: "registry:ui"
+  name: "artode-icon",
+  path: 'path.join(__dirname, "../components/artode-icon.tsx")',
+  registryDependencies: [],
+  dependencies: [],
+  type: "registry:ui"
 });
 
 // 2. Generate Icon Files and Registry Entries
 Object.entries(paths).forEach(([name, d]) => {
-    // Convert name to kebab-case for filename (e.g. Next.js -> next-js)
-    const fileName = name.toLowerCase().replace(/\./g, "-").replace(/\s+/g, "-");
-    const componentName = name.replace(/\./g, "").replace(/\s+/g, "") + "Icon";
+  // Convert name to kebab-case for filename (e.g. Next.js -> next-js)
+  const fileName = name.toLowerCase().replace(/\./g, "-").replace(/\s+/g, "-").replace(/\+/g, "plus").replace(/#/g, "sharp");
+  // Ensure unique component name (PascalCase)
+  const componentName = name.replace(/[^a-zA-Z0-9]/g, "") + "Icon";
 
-    // Create component content
-    const content = `"use client";
+  // Since this is a LOGO library, we default all to FILL
+  // Unless we specifically want outline logos, but brands are usually filled.
+  const drawType = "fill";
+
+  // Create component content
+  const content = `"use client";
 
 import { ArtodeIcon, type ArtodeIconProps } from "@/components/artode-icon";
 
 const PATH = "${d}";
 
-export const ${componentName} = ({ className, size, ...props }: Omit<ArtodeIconProps, "path">) => {
+export const ${componentName} = ({ className, size, drawType = "${drawType}", ...props }: Omit<ArtodeIconProps, "path" | "drawType"> & { drawType?: "fill" | "stroke" }) => {
   return (
     <ArtodeIcon
       path={PATH}
       className={className}
       size={size}
+      drawType={drawType}
       {...props}
     />
   );
 };
 `;
 
-    fs.writeFileSync(path.join(iconsDir, `${fileName}.tsx`), content);
+  fs.writeFileSync(path.join(iconsDir, `${fileName}.tsx`), content);
 
-    // Add to registry list
-    registryComponents.push({
-        name: fileName,
-        path: `path.join(__dirname, "../icons/${fileName}.tsx")`,
-        registryDependencies: ["artode-icon"],
-        dependencies: [],
-        type: "registry:ui"
-    });
+  // Add to registry list
+  registryComponents.push({
+    name: fileName,
+    path: `path.join(__dirname, "../icons/${fileName}.tsx")`,
+    registryDependencies: ["artode-icon"],
+    dependencies: [],
+    type: "registry:ui"
+  });
 });
 
 // 3. Generate registry-components.ts

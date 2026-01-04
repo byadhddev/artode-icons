@@ -15,15 +15,16 @@ export default function Home() {
                 </p>
             </header>
 
-            <div className="grid grid-cols-4 gap-16">
-                {icons.map(([name, path]) => (
-                    <div key={name} className="flex flex-col items-center gap-6 group cursor-pointer">
+            <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-12 pb-24">
+                {icons.sort((a, b) => a[0].localeCompare(b[0])).map(([name, path]) => (
+                    <div key={name} className="flex flex-col items-center gap-4 group cursor-pointer">
                         <ArtodeIcon
                             path={path}
-                            size={48}
+                            size={40}
+                            drawType="fill"
                             className="text-[var(--primary)] group-hover:scale-110 transition-transform duration-300"
                         />
-                        <span className="font-mono text-[10px] uppercase tracking-widest text-[var(--secondary)] group-hover:text-[var(--primary)] transition-colors">
+                        <span className="font-mono text-[9px] uppercase tracking-widest text-[var(--secondary)] group-hover:text-[var(--primary)] transition-colors opacity-60 group-hover:opacity-100 text-center max-w-[80px] truncate">
                             {name}
                         </span>
                     </div>

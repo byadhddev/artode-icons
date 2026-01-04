@@ -270,6 +270,501 @@
           "type": "registry:ui"
         }
       ]
+    },
+    {
+      "name": "go",
+      "type": "registry:ui",
+      "registryDependencies": [
+        "artode-icon"
+      ],
+      "dependencies": [],
+      "devDependencies": [],
+      "files": [
+        {
+          "path": "go.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "php",
+      "type": "registry:ui",
+      "registryDependencies": [
+        "artode-icon"
+      ],
+      "dependencies": [],
+      "devDependencies": [],
+      "files": [
+        {
+          "path": "php.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "ruby",
+      "type": "registry:ui",
+      "registryDependencies": [
+        "artode-icon"
+      ],
+      "dependencies": [],
+      "devDependencies": [],
+      "files": [
+        {
+          "path": "ruby.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "swift",
+      "type": "registry:ui",
+      "registryDependencies": [
+        "artode-icon"
+      ],
+      "dependencies": [],
+      "devDependencies": [],
+      "files": [
+        {
+          "path": "swift.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "kotlin",
+      "type": "registry:ui",
+      "registryDependencies": [
+        "artode-icon"
+      ],
+      "dependencies": [],
+      "devDependencies": [],
+      "files": [
+        {
+          "path": "kotlin.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "cplusplus",
+      "type": "registry:ui",
+      "registryDependencies": [
+        "artode-icon"
+      ],
+      "dependencies": [],
+      "devDependencies": [],
+      "files": [
+        {
+          "path": "cplusplus.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "vue-js",
+      "type": "registry:ui",
+      "registryDependencies": [
+        "artode-icon"
+      ],
+      "dependencies": [],
+      "devDependencies": [],
+      "files": [
+        {
+          "path": "vue-js.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "svelte",
+      "type": "registry:ui",
+      "registryDependencies": [
+        "artode-icon"
+      ],
+      "dependencies": [],
+      "devDependencies": [],
+      "files": [
+        {
+          "path": "svelte.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "angular",
+      "type": "registry:ui",
+      "registryDependencies": [
+        "artode-icon"
+      ],
+      "dependencies": [],
+      "devDependencies": [],
+      "files": [
+        {
+          "path": "angular.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "astro",
+      "type": "registry:ui",
+      "registryDependencies": [
+        "artode-icon"
+      ],
+      "dependencies": [],
+      "devDependencies": [],
+      "files": [
+        {
+          "path": "astro.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "django",
+      "type": "registry:ui",
+      "registryDependencies": [
+        "artode-icon"
+      ],
+      "dependencies": [],
+      "devDependencies": [],
+      "files": [
+        {
+          "path": "django.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "laravel",
+      "type": "registry:ui",
+      "registryDependencies": [
+        "artode-icon"
+      ],
+      "dependencies": [],
+      "devDependencies": [],
+      "files": [
+        {
+          "path": "laravel.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "spring",
+      "type": "registry:ui",
+      "registryDependencies": [
+        "artode-icon"
+      ],
+      "dependencies": [],
+      "devDependencies": [],
+      "files": [
+        {
+          "path": "spring.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "flutter",
+      "type": "registry:ui",
+      "registryDependencies": [
+        "artode-icon"
+      ],
+      "dependencies": [],
+      "devDependencies": [],
+      "files": [
+        {
+          "path": "flutter.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "postgresql",
+      "type": "registry:ui",
+      "registryDependencies": [
+        "artode-icon"
+      ],
+      "dependencies": [],
+      "devDependencies": [],
+      "files": [
+        {
+          "path": "postgresql.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "mongodb",
+      "type": "registry:ui",
+      "registryDependencies": [
+        "artode-icon"
+      ],
+      "dependencies": [],
+      "devDependencies": [],
+      "files": [
+        {
+          "path": "mongodb.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "redis",
+      "type": "registry:ui",
+      "registryDependencies": [
+        "artode-icon"
+      ],
+      "dependencies": [],
+      "devDependencies": [],
+      "files": [
+        {
+          "path": "redis.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "mysql",
+      "type": "registry:ui",
+      "registryDependencies": [
+        "artode-icon"
+      ],
+      "dependencies": [],
+      "devDependencies": [],
+      "files": [
+        {
+          "path": "mysql.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "supabase",
+      "type": "registry:ui",
+      "registryDependencies": [
+        "artode-icon"
+      ],
+      "dependencies": [],
+      "devDependencies": [],
+      "files": [
+        {
+          "path": "supabase.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "firebase",
+      "type": "registry:ui",
+      "registryDependencies": [
+        "artode-icon"
+      ],
+      "dependencies": [],
+      "devDependencies": [],
+      "files": [
+        {
+          "path": "firebase.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "graphql",
+      "type": "registry:ui",
+      "registryDependencies": [
+        "artode-icon"
+      ],
+      "dependencies": [],
+      "devDependencies": [],
+      "files": [
+        {
+          "path": "graphql.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "sqlite",
+      "type": "registry:ui",
+      "registryDependencies": [
+        "artode-icon"
+      ],
+      "dependencies": [],
+      "devDependencies": [],
+      "files": [
+        {
+          "path": "sqlite.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "gcp",
+      "type": "registry:ui",
+      "registryDependencies": [
+        "artode-icon"
+      ],
+      "dependencies": [],
+      "devDependencies": [],
+      "files": [
+        {
+          "path": "gcp.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "kubernetes",
+      "type": "registry:ui",
+      "registryDependencies": [
+        "artode-icon"
+      ],
+      "dependencies": [],
+      "devDependencies": [],
+      "files": [
+        {
+          "path": "kubernetes.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "git",
+      "type": "registry:ui",
+      "registryDependencies": [
+        "artode-icon"
+      ],
+      "dependencies": [],
+      "devDependencies": [],
+      "files": [
+        {
+          "path": "git.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "bun",
+      "type": "registry:ui",
+      "registryDependencies": [
+        "artode-icon"
+      ],
+      "dependencies": [],
+      "devDependencies": [],
+      "files": [
+        {
+          "path": "bun.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "pnpm",
+      "type": "registry:ui",
+      "registryDependencies": [
+        "artode-icon"
+      ],
+      "dependencies": [],
+      "devDependencies": [],
+      "files": [
+        {
+          "path": "pnpm.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "npm",
+      "type": "registry:ui",
+      "registryDependencies": [
+        "artode-icon"
+      ],
+      "dependencies": [],
+      "devDependencies": [],
+      "files": [
+        {
+          "path": "npm.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "intellij",
+      "type": "registry:ui",
+      "registryDependencies": [
+        "artode-icon"
+      ],
+      "dependencies": [],
+      "devDependencies": [],
+      "files": [
+        {
+          "path": "intellij.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "postman",
+      "type": "registry:ui",
+      "registryDependencies": [
+        "artode-icon"
+      ],
+      "dependencies": [],
+      "devDependencies": [],
+      "files": [
+        {
+          "path": "postman.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "discord",
+      "type": "registry:ui",
+      "registryDependencies": [
+        "artode-icon"
+      ],
+      "dependencies": [],
+      "devDependencies": [],
+      "files": [
+        {
+          "path": "discord.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "youtube",
+      "type": "registry:ui",
+      "registryDependencies": [
+        "artode-icon"
+      ],
+      "dependencies": [],
+      "devDependencies": [],
+      "files": [
+        {
+          "path": "youtube.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "instagram",
+      "type": "registry:ui",
+      "registryDependencies": [
+        "artode-icon"
+      ],
+      "dependencies": [],
+      "devDependencies": [],
+      "files": [
+        {
+          "path": "instagram.tsx",
+          "type": "registry:ui"
+        }
+      ]
     }
   ]
 }

@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "vercel.tsx",
-      "content": "\"use client\";\n\nimport { ArtodeIcon, type ArtodeIconProps } from \"@/components/artode-icon\";\n\nconst PATH = \"m12 1.608 12 20.784H0Z\";\n\nexport const VercelIcon = ({ className, size, ...props }: Omit<ArtodeIconProps, \"path\">) => {\n  return (\n    <ArtodeIcon\n      path={PATH}\n      className={className}\n      size={size}\n      {...props}\n    />\n  );\n};\n",
+      "content": "\"use client\";\n\nimport { ArtodeIcon, type ArtodeIconProps } from \"@/components/artode-icon\";\n\nconst PATH = \"m12 1.608 12 20.784H0Z\";\n\nexport const VercelIcon = ({ className, size, drawType = \"fill\", ...props }: Omit<ArtodeIconProps, \"path\" | \"drawType\"> & { drawType?: \"fill\" | \"stroke\" }) => {\n  return (\n    <ArtodeIcon\n      path={PATH}\n      className={className}\n      size={size}\n      drawType={drawType}\n      {...props}\n    />\n  );\n};\n",
       "type": "registry:ui"
     }
   ]

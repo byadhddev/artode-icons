@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "kotlin",
+  "type": "registry:ui",
+  "registryDependencies": [
+    "artode-icon"
+  ],
+  "dependencies": [],
+  "devDependencies": [],
+  "files": [
+    {
+      "path": "kotlin.tsx",
+      "content": "\"use client\";\n\nimport { ArtodeIcon, type ArtodeIconProps } from \"@/components/artode-icon\";\n\nconst PATH = \"M24 24H0V0h24L12 12Z\";\n\nexport const KotlinIcon = ({ className, size, drawType = \"fill\", ...props }: Omit<ArtodeIconProps, \"path\" | \"drawType\"> & { drawType?: \"fill\" | \"stroke\" }) => {\n  return (\n    <ArtodeIcon\n      path={PATH}\n      className={className}\n      size={size}\n      drawType={drawType}\n      {...props}\n    />\n  );\n};\n",
+      "type": "registry:ui"
+    }
+  ]
+}
