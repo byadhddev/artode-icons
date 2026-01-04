@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "vercel",
+  "type": "registry:ui",
+  "registryDependencies": [
+    "artode-icon"
+  ],
+  "dependencies": [],
+  "devDependencies": [],
+  "files": [
+    {
+      "path": "vercel.tsx",
+      "content": "\"use client\";\n\nimport { ArtodeIcon, type ArtodeIconProps } from \"@/components/artode-icon\";\n\nconst PATH = \"m12 1.608 12 20.784H0Z\";\n\nexport const VercelIcon = ({ className, size, ...props }: Omit<ArtodeIconProps, \"path\">) => {\n  return (\n    <ArtodeIcon\n      path={PATH}\n      className={className}\n      size={size}\n      {...props}\n    />\n  );\n};\n",
+      "type": "registry:ui"
+    }
+  ]
+}

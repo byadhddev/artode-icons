@@ -1,0 +1,275 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "artode-icons",
+  "homepage": "https://artode-icons.com",
+  "items": [
+    {
+      "name": "artode-icon",
+      "type": "registry:ui",
+      "registryDependencies": [],
+      "dependencies": [],
+      "devDependencies": [],
+      "files": [
+        {
+          "path": "artode-icon.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "github",
+      "type": "registry:ui",
+      "registryDependencies": [
+        "artode-icon"
+      ],
+      "dependencies": [],
+      "devDependencies": [],
+      "files": [
+        {
+          "path": "github.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "react",
+      "type": "registry:ui",
+      "registryDependencies": [
+        "artode-icon"
+      ],
+      "dependencies": [],
+      "devDependencies": [],
+      "files": [
+        {
+          "path": "react.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "next-js",
+      "type": "registry:ui",
+      "registryDependencies": [
+        "artode-icon"
+      ],
+      "dependencies": [],
+      "devDependencies": [],
+      "files": [
+        {
+          "path": "next-js.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "typescript",
+      "type": "registry:ui",
+      "registryDependencies": [
+        "artode-icon"
+      ],
+      "dependencies": [],
+      "devDependencies": [],
+      "files": [
+        {
+          "path": "typescript.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "javascript",
+      "type": "registry:ui",
+      "registryDependencies": [
+        "artode-icon"
+      ],
+      "dependencies": [],
+      "devDependencies": [],
+      "files": [
+        {
+          "path": "javascript.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "node-js",
+      "type": "registry:ui",
+      "registryDependencies": [
+        "artode-icon"
+      ],
+      "dependencies": [],
+      "devDependencies": [],
+      "files": [
+        {
+          "path": "node-js.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "python",
+      "type": "registry:ui",
+      "registryDependencies": [
+        "artode-icon"
+      ],
+      "dependencies": [],
+      "devDependencies": [],
+      "files": [
+        {
+          "path": "python.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "rust",
+      "type": "registry:ui",
+      "registryDependencies": [
+        "artode-icon"
+      ],
+      "dependencies": [],
+      "devDependencies": [],
+      "files": [
+        {
+          "path": "rust.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "docker",
+      "type": "registry:ui",
+      "registryDependencies": [
+        "artode-icon"
+      ],
+      "dependencies": [],
+      "devDependencies": [],
+      "files": [
+        {
+          "path": "docker.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "vercel",
+      "type": "registry:ui",
+      "registryDependencies": [
+        "artode-icon"
+      ],
+      "dependencies": [],
+      "devDependencies": [],
+      "files": [
+        {
+          "path": "vercel.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "tailwind",
+      "type": "registry:ui",
+      "registryDependencies": [
+        "artode-icon"
+      ],
+      "dependencies": [],
+      "devDependencies": [],
+      "files": [
+        {
+          "path": "tailwind.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "apple",
+      "type": "registry:ui",
+      "registryDependencies": [
+        "artode-icon"
+      ],
+      "dependencies": [],
+      "devDependencies": [],
+      "files": [
+        {
+          "path": "apple.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "google",
+      "type": "registry:ui",
+      "registryDependencies": [
+        "artode-icon"
+      ],
+      "dependencies": [],
+      "devDependencies": [],
+      "files": [
+        {
+          "path": "google.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "linux",
+      "type": "registry:ui",
+      "registryDependencies": [
+        "artode-icon"
+      ],
+      "dependencies": [],
+      "devDependencies": [],
+      "files": [
+        {
+          "path": "linux.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "figma",
+      "type": "registry:ui",
+      "registryDependencies": [
+        "artode-icon"
+      ],
+      "dependencies": [],
+      "devDependencies": [],
+      "files": [
+        {
+          "path": "figma.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "gitlab",
+      "type": "registry:ui",
+      "registryDependencies": [
+        "artode-icon"
+      ],
+      "dependencies": [],
+      "devDependencies": [],
+      "files": [
+        {
+          "path": "gitlab.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "twitter",
+      "type": "registry:ui",
+      "registryDependencies": [
+        "artode-icon"
+      ],
+      "dependencies": [],
+      "devDependencies": [],
+      "files": [
+        {
+          "path": "twitter.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    }
+  ]
+}
