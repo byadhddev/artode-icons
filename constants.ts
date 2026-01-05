@@ -23,7 +23,7 @@ const SITE = {
 
 const LINK = {
   TWITTER: "https://x.com/artode",
-  GITHUB: "https://github.com/artode/icons",
+  GITHUB: "https://github.com/adhdpaws/artode-icons",
   LUCIDE: "https://lucide.dev",
   MOTION: "https://motion.dev",
   LICENSE: "https://github.com/artode/icons/blob/main/LICENSE",

@@ -7,7 +7,7 @@ import { SponsorParticles } from "@/components/sponsor-particles";
 
 async function getGitHubStars() {
     try {
-        const response = await fetch("https://api.github.com/repos/artode/icons", {
+        const response = await fetch("https://api.github.com/repos/adhdpaws/artode-icons", {
             next: { revalidate: 3600 }, // Cache for 1 hour
             headers: {
                 "User-Agent": "Artode-Icons-Site"
