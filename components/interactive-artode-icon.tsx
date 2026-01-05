@@ -202,8 +202,7 @@ export const InteractiveArtodeIcon: React.FC<InteractiveArtodeIconProps> = ({
         return () => {
             if (animId) cancelAnimationFrame(animId);
         };
-    }, [path, size, color]); // Removed isHovered from dependencies to prevent reset
-
+    }, [path, size, color, width, height]); // Added width/height to deps to handle resize
 
     return (
         <canvas
