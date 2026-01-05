@@ -9,6 +9,9 @@ import { ArtodeSymbol } from "@/components/artode-symbol";
 import { usePackageNameContext } from "@/components/providers/package-name";
 import { PACKAGE_MANAGER } from "@/constants";
 import { getInstallCommand } from "@/lib/get-install-command";
+import { CliBlock } from "@/components/cli-block";
+
+const EXAMPLE_ICONS = ["archive", "activity", "github", "twitter", "heart", "camera", "cloud", "react", "vue-js", "next-js"];
 
 export function Hero({ totalIcons }: { totalIcons: number }) {
     const { packageName, setPackageName } = usePackageNameContext();
@@ -68,37 +71,9 @@ export function Hero({ totalIcons }: { totalIcons: number }) {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5 }}
-                className="w-full max-w-lg mt-4 z-10"
+                className="w-full flex justify-center mt-4 z-10"
             >
-                <div className="flex items-center justify-center gap-1 mb-2">
-                    {Object.values(PACKAGE_MANAGER).map((pm) => (
-                        <button
-                            key={pm}
-                            onClick={() => setPackageName(pm)}
-                            className={cn(
-                                "px-3 py-1 text-[10px] font-mono rounded-t-md border-t border-x transition-colors",
-                                packageName === pm
-                                    ? "bg-background border-secondary/10 text-primary z-10 -mb-px border-b-background pb-1.5"
-                                    : "bg-secondary/5 border-transparent text-secondary/40 hover:text-secondary hover:bg-secondary/10"
-                            )}
-                        >
-                            {pm}
-                        </button>
-                    ))}
-                </div>
-
-                <div className="relative group rounded-md bg-secondary/5 border border-secondary/10 p-4 font-mono text-xs text-secondary/80 flex items-center justify-center hover:border-secondary/20 transition-colors">
-                    <div className="flex items-center truncate">
-                        <span className="text-secondary/60">{installPrefix} </span>
-                        <span className="text-primary font-bold ml-2">artode-icons</span>
-                    </div>
-                    <button
-                        onClick={handleCopy}
-                        className="absolute right-3 top-1/2 -translate-y-1/2 p-1.5 rounded-md hover:bg-secondary/10 text-secondary/40 hover:text-primary transition-colors"
-                    >
-                        {copied ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
-                    </button>
-                </div>
+                <CliBlock icons={EXAMPLE_ICONS} />
             </motion.div>
         </section>
     );

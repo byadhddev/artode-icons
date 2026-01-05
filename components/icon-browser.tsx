@@ -314,7 +314,7 @@ function CopyCodeAction({ name }: { name: string }) {
 }
 
 import { usePackageNameContext } from "@/components/providers/package-name";
-import { getInstallCommand } from "@/lib/get-install-command";
+import { getPackageManagerPrefix } from "@/lib/get-package-manager-prefix";
 
 function CopyCLIAction({ name }: { name: string }) {
     const [status, setStatus] = useState<"idle" | "success">("idle");
@@ -322,9 +322,10 @@ function CopyCLIAction({ name }: { name: string }) {
 
     const handleCopy = (e: React.MouseEvent) => {
         e.stopPropagation();
+        const registryName = getRegistryName(name);
 
-        const prefix = getInstallCommand(packageName);
-        const command = `${prefix} artode-icons`;
+        const prefix = getPackageManagerPrefix(packageName);
+        const command = `${prefix} shadcn@latest add @artode-icons/${registryName}`;
 
         navigator.clipboard.writeText(command);
         setStatus("success");
@@ -343,7 +344,7 @@ function CopyCLIAction({ name }: { name: string }) {
                 </button>
             </TooltipTrigger>
             <TooltipContent side="right">
-                <p>Copy Install Command</p>
+                <p>Add via CLI</p>
             </TooltipContent>
         </Tooltip>
     );
