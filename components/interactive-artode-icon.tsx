@@ -158,7 +158,7 @@ export const InteractiveArtodeIcon: React.FC<InteractiveArtodeIconProps> = ({
     return (
         <canvas
             ref={canvasRef}
-            className={cn("cursor-none", className)} // Hide cursor is optional, but feels better for interaction
+            className={cn("", className)} // Cursor visible for better UX in playground
             onMouseEnter={() => setInternalHover(true)}
             onMouseLeave={() => setInternalHover(false)}
             onMouseMove={handleMouseMove}
