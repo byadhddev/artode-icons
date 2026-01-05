@@ -12,6 +12,16 @@ export interface InteractiveArtodeIconProps extends ArtodeIconProps {
      * Default depends on size.
      */
     particleDensity?: 'low' | 'medium' | 'high';
+    /**
+     * If true, tracks mouse globally (window) instead of just within canvas.
+     */
+    globalMouse?: boolean;
+    /**
+     * Optional custom canvas dimensions. 
+     * If provided, the canvas will be this size, but the icon will remain 'size' pixels and centered.
+     * Useful for allowing particles to spread into a larger area (e.g. playground).
+     */
+    customCanvasSize?: { width: number; height: number };
 }
 
 export const InteractiveArtodeIcon: React.FC<InteractiveArtodeIconProps> = ({
@@ -20,28 +30,56 @@ export const InteractiveArtodeIcon: React.FC<InteractiveArtodeIconProps> = ({
     color = '#D80018',
     className,
     forceHover = false,
+    globalMouse = false,
+    customCanvasSize,
 }) => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const [internalHover, setInternalHover] = useState(false);
-    const isHovered = forceHover || internalHover;
+    const isHovered = forceHover || internalHover || globalMouse; // Global mouse implies always active tracking
 
-    const mouseRef = useRef({ x: size / 2, y: size / 2 });
+    const width = customCanvasSize?.width ?? size;
+    const height = customCanvasSize?.height ?? size;
 
-    const handleMouseMove = (e: React.MouseEvent) => {
+    // Use ref for isHovered to avoid effect re-triggering and hard resets
+    const isHoveredRef = useRef(isHovered);
+    useEffect(() => {
+        isHoveredRef.current = isHovered;
+    }, [isHovered]);
+
+    const mouseRef = useRef({ x: width / 2, y: height / 2 });
+
+    const handleMouseMove = (e: React.MouseEvent | MouseEvent) => {
         if (!canvasRef.current) return;
         const rect = canvasRef.current.getBoundingClientRect();
 
         // Scale to canvas coords
-        let x = (e.clientX - rect.left) * (size / rect.width);
-        let y = (e.clientY - rect.top) * (size / rect.height);
+        let x = (e.clientX - rect.left) * (width / rect.width);
+        let y = (e.clientY - rect.top) * (height / rect.height);
 
         // Clamp to keep mouse influence within bounds
         const padding = size * 0.1;
-        x = Math.max(padding, Math.min(size - padding, x));
-        y = Math.max(padding, Math.min(size - padding, y));
+
+        // If global mouse, we don't clamp strictly to canvas, but we might want to clamp interaction radius?
+        // Actually user said "entire playground white space wherever the cursor is it should be acting"
+        // This implies the target can be outside the canvas.
+
+        // Always clamp the target point to be within the canvas bounds.
+        // This ensures that even if the mouse is outside (global tracking),
+        // the particles 'swarm' towards the edge nearest the mouse but don't disappear off-canvas.
+        x = Math.max(padding, Math.min(width - padding, x));
+        y = Math.max(padding, Math.min(height - padding, y));
 
         mouseRef.current = { x, y };
     };
+
+    useEffect(() => {
+        if (globalMouse) {
+            setInternalHover(false); // Reset internal hover so state depends purely on globalMouse
+            window.addEventListener('mousemove', handleMouseMove);
+            return () => window.removeEventListener('mousemove', handleMouseMove);
+        }
+    }, [globalMouse, width, height]); // Re-bind if size changes as handleMouseMove depends on it? ideally use ref for size or callback
+
 
     useEffect(() => {
         const canvas = canvasRef.current;
@@ -52,27 +90,27 @@ export const InteractiveArtodeIcon: React.FC<InteractiveArtodeIconProps> = ({
         const dpr = window.devicePixelRatio || 1;
 
         // Resize canvas if needed
-        if (canvas.width !== size * dpr) {
-            canvas.width = size * dpr;
-            canvas.height = size * dpr;
-            canvas.style.width = `${size}px`;
-            canvas.style.height = `${size}px`;
+        // Check both dimensions
+        if (canvas.width !== width * dpr || canvas.height !== height * dpr) {
+            canvas.width = width * dpr;
+            canvas.height = height * dpr;
+            canvas.style.width = `${width}px`;
+            canvas.style.height = `${height}px`;
             ctx.scale(dpr, dpr);
         }
 
         // --- 1. Generate Points from Icon Path ---
         // Center icon initially
         const getIconPoints = () => {
-            // We want the icon to take up most of the canvas but have some padding
-            // Standard paths are 24x24 usually. We scale them up not to fill 100% (so particles have room to move)
-            // We fit into 60% of size to allow swarm expansion without clipping
+            // We want the icon to be 'size' pixels large, centered in 'width'/'height' canvas
+            // Standard paths are 24x24 usually. 
             const iconSize = size * 0.6;
-            const px = (size - iconSize) / 2;
-            const py = (size - iconSize) / 2;
+            const px = (width - iconSize) / 2;
+            const py = (height - iconSize) / 2;
 
             const tmp = document.createElement('canvas');
-            tmp.width = size;
-            tmp.height = size;
+            tmp.width = width;
+            tmp.height = height;
             const tCtx = tmp.getContext('2d');
             if (!tCtx) return [];
 
@@ -85,16 +123,16 @@ export const InteractiveArtodeIcon: React.FC<InteractiveArtodeIconProps> = ({
             tCtx.fill(p, "evenodd");
             tCtx.restore();
 
-            const data = tCtx.getImageData(0, 0, size, size).data;
+            const data = tCtx.getImageData(0, 0, width, height).data;
             const pts = [];
 
             // Optimization: Only skip pixels if size is extremely large to prevent freezing
             let step = 1;
-            if (size > 200) step = 2; // Only skip for very large icons
+            // Removed step = 2 optimization to maintain consistent density at all sizes per user request
 
-            for (let y = 0; y < size; y += step) {
-                for (let x = 0; x < size; x += step) {
-                    if (data[(y * size + x) * 4 + 3] > 80) pts.push({ x, y });
+            for (let y = 0; y < height; y += step) {
+                for (let x = 0; x < width; x += step) {
+                    if (data[(y * width + x) * 4 + 3] > 80) pts.push({ x, y });
                 }
             }
             return pts;
@@ -113,10 +151,10 @@ export const InteractiveArtodeIcon: React.FC<InteractiveArtodeIconProps> = ({
 
         let animId: number;
         const render = () => {
-            ctx.clearRect(0, 0, size, size);
+            ctx.clearRect(0, 0, width, height);
             ctx.fillStyle = color;
 
-            if (isHovered) {
+            if (isHoveredRef.current) {
                 // Swarm towards mouse
                 particles.forEach(p => {
                     const target = mouseRef.current;
@@ -137,8 +175,8 @@ export const InteractiveArtodeIcon: React.FC<InteractiveArtodeIconProps> = ({
                     const dx = target.x - p.x;
                     const dy = target.y - p.y;
 
-                    p.x += dx * (p.speed * 1.5); // Slightly faster return than disperse, but still organic
-                    p.y += dy * (p.speed * 1.5);
+                    p.x += dx * (p.speed * 8.0); // Faster return per user request ("little faster than dispersion", actually MUCH faster to be visible)
+                    p.y += dy * (p.speed * 8.0);
 
                     // Tiny particles
                     const s = 0.8;
@@ -153,16 +191,17 @@ export const InteractiveArtodeIcon: React.FC<InteractiveArtodeIconProps> = ({
         return () => {
             if (animId) cancelAnimationFrame(animId);
         };
-    }, [path, size, color, isHovered]);
+    }, [path, size, color]); // Removed isHovered from dependencies to prevent reset
+
 
     return (
         <canvas
             ref={canvasRef}
             className={cn("", className)} // Cursor visible for better UX in playground
-            onMouseEnter={() => setInternalHover(true)}
-            onMouseLeave={() => setInternalHover(false)}
-            onMouseMove={handleMouseMove}
-            style={{ width: size, height: size }}
+            onMouseEnter={() => !globalMouse && setInternalHover(true)}
+            onMouseLeave={() => !globalMouse && setInternalHover(false)}
+            onMouseMove={!globalMouse ? handleMouseMove : undefined}
+            style={{ width: width, height: height }}
         />
     );
 };

@@ -19,6 +19,10 @@ export interface ArtodeIconProps {
     drawType?: 'fill' | 'stroke';
     /** Enable interactive particle mode */
     interactive?: boolean;
+    /** Enable global mouse tracking for interactive mode */
+    globalMouse?: boolean;
+    /** Custom canvas size for interactive mode (width, height) */
+    customCanvasSize?: { width: number; height: number };
 }
 
 export const ArtodeIcon: React.FC<ArtodeIconProps> = ({
@@ -28,7 +32,9 @@ export const ArtodeIcon: React.FC<ArtodeIconProps> = ({
     className,
     forceHover = false,
     drawType = 'fill',
-    interactive = false
+    interactive = false,
+    globalMouse = false,
+    customCanvasSize
 }) => {
     if (interactive) {
         return (
@@ -38,6 +44,8 @@ export const ArtodeIcon: React.FC<ArtodeIconProps> = ({
                 color={color}
                 className={className}
                 forceHover={forceHover}
+                globalMouse={globalMouse}
+                customCanvasSize={customCanvasSize}
             />
         );
     }
