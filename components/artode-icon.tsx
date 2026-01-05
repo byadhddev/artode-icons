@@ -2,6 +2,8 @@
 
 import React, { useEffect, useRef } from 'react';
 
+import { InteractiveArtodeIcon } from './interactive-artode-icon';
+
 export interface ArtodeIconProps {
     /** SVG Path string for the icon shape */
     path: string;
@@ -15,6 +17,8 @@ export interface ArtodeIconProps {
     forceHover?: boolean;
     /** Draw either the stroke or the fill of the SVG path */
     drawType?: 'fill' | 'stroke';
+    /** Enable interactive particle mode */
+    interactive?: boolean;
 }
 
 export const ArtodeIcon: React.FC<ArtodeIconProps> = ({
@@ -23,8 +27,21 @@ export const ArtodeIcon: React.FC<ArtodeIconProps> = ({
     color = '#D80018',
     className,
     forceHover = false,
-    drawType = 'fill'
+    drawType = 'fill',
+    interactive = false
 }) => {
+    if (interactive) {
+        return (
+            <InteractiveArtodeIcon
+                path={pathString}
+                size={size}
+                color={color}
+                className={className}
+                forceHover={forceHover}
+            />
+        );
+    }
+
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const [internalHover, setInternalHover] = React.useState(false);
     const isHovered = forceHover || internalHover;
