@@ -9,7 +9,7 @@ const getPackageManagerPrefix = (
     case PACKAGE_MANAGER.NPM:
       return "npx";
     case PACKAGE_MANAGER.YARN:
-      return "npx";
+      return "npx"; // Yarn also typically uses npx or yarn dlx? sticking to reference
     case PACKAGE_MANAGER.BUN:
       return "bunx --bun";
     default:

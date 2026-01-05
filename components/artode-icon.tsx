@@ -11,15 +11,20 @@ interface ArtodeIconProps {
     color?: string;
     /** ClassName for additional styling */
     className?: string;
+    /** Force hover state for animation control */
+    forceHover?: boolean;
 }
 
 export const ArtodeIcon: React.FC<ArtodeIconProps> = ({
     path: pathString,
     size = 32,
     color = '#D80018',
-    className
+    className,
+    forceHover = false
 }) => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
+    const [internalHover, setInternalHover] = React.useState(false);
+    const isHovered = forceHover || internalHover;
 
     useEffect(() => {
         const canvas = canvasRef.current;
@@ -30,12 +35,13 @@ export const ArtodeIcon: React.FC<ArtodeIconProps> = ({
         // High DPI support
         const dpr = window.devicePixelRatio || 1;
 
-        canvas.width = size * dpr;
-        canvas.height = size * dpr;
-        canvas.style.width = `${size}px`;
-        canvas.style.height = `${size}px`;
-
-        ctx.scale(dpr, dpr);
+        if (canvas.width !== size * dpr) {
+            canvas.width = size * dpr;
+            canvas.height = size * dpr;
+            canvas.style.width = `${size}px`;
+            canvas.style.height = `${size}px`;
+            ctx.scale(dpr, dpr);
+        }
 
         // 1. Create Mask using Path2D
         const maskCanvas = document.createElement('canvas');
@@ -53,8 +59,6 @@ export const ArtodeIcon: React.FC<ArtodeIconProps> = ({
         const scale = size / 24;
         maskCtx.scale(scale, scale);
 
-        // Center the path if needed (optional refinement could go here)
-        // Center the path if needed (optional refinement could go here)
         // Use evenodd rule to handle complex paths with holes (like X or WhatsApp)
         maskCtx.fill(path, "evenodd");
 
@@ -71,7 +75,13 @@ export const ArtodeIcon: React.FC<ArtodeIconProps> = ({
         let animId: number;
 
         const render = () => {
-            time += 0.002;
+            if (isHovered) {
+                time += 0.005; // Slightly faster animation on hover
+            } else {
+                // Static time for idle state to show some texture but no movement
+                time = 1.0;
+            }
+
             ctx.clearRect(0, 0, size, size);
             ctx.fillStyle = color;
 
@@ -84,43 +94,55 @@ export const ArtodeIcon: React.FC<ArtodeIconProps> = ({
 
                     if (alpha > 100) {
                         // Base visibility (dimmed background of the shape)
-                        ctx.globalAlpha = 0.3;
+                        // If not hovered, make it more solid/readable
+                        ctx.globalAlpha = isHovered ? 0.5 : 0.7;
                         ctx.fillRect(x, y, 1, 1);
 
-                        // Wave Calculation
-                        let amplitude = 0;
-                        for (const source of sources) {
-                            const dx = x - source.x;
-                            const dy = y - source.y;
-                            const dist = Math.sqrt(dx * dx + dy * dy);
-                            amplitude += Math.sin((dist / source.wavelength - time * 10) * 2 * Math.PI + source.phase);
-                        }
+                        // Only calculate waves if hovered to save CPU
+                        if (isHovered) {
+                            // Wave Calculation
+                            let amplitude = 0;
+                            for (const source of sources) {
+                                const dx = x - source.x;
+                                const dy = y - source.y;
+                                const dist = Math.sqrt(dx * dx + dy * dy);
+                                amplitude += Math.sin((dist / source.wavelength - time * 10) * 2 * Math.PI + source.phase);
+                            }
 
-                        // Normalize amplitude to 0-1 range roughly
-                        const normalized = (amplitude + sources.length) / (sources.length * 2);
-                        const val = (normalized * 5) % 1;
+                            // Normalize amplitude to 0-1 range roughly
+                            const normalized = (amplitude + sources.length) / (sources.length * 2);
+                            const val = (normalized * 5) % 1;
 
-                        // Threshold for the "bright" wave lines
-                        if (val > 0.65) {
-                            ctx.globalAlpha = 1.0;
-                            ctx.fillRect(x, y, 1, 1);
+                            // Threshold for the "bright" wave lines
+                            if (val > 0.65) {
+                                ctx.globalAlpha = 1.0;
+                                ctx.fillRect(x, y, 1, 1);
+                            }
                         }
                     }
                 }
             }
-            animId = requestAnimationFrame(render);
+
+            if (isHovered) {
+                animId = requestAnimationFrame(render);
+            }
         };
 
+        // Initial render
         render();
 
-        return () => cancelAnimationFrame(animId);
-    }, [pathString, size, color]);
+        return () => {
+            if (animId) cancelAnimationFrame(animId);
+        };
+    }, [pathString, size, color, isHovered]);
 
     return (
         <canvas
             ref={canvasRef}
-            className={`transition-opacity hover:opacity-80 ${className || ''}`}
+            className={`transition-opacity ${className || ''}`}
             aria-hidden="true"
+            onMouseEnter={() => setInternalHover(true)}
+            onMouseLeave={() => setInternalHover(false)}
         />
     );
 };
