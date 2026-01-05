@@ -147,6 +147,14 @@ export const InteractiveArtodeIcon: React.FC<InteractiveArtodeIconProps> = ({
             homeA: ptsA[i],
             speed: 0.001 + Math.random() * 0.002, // Slow, viscous movement (matches SocialParticleCard)
             friction: 0.9 + Math.random() * 0.05,
+            swarmOffset: (() => {
+                const angle = Math.random() * Math.PI * 2;
+                const r = Math.sqrt(Math.random()) * 25; // 25px radius circular distribution
+                return {
+                    x: Math.cos(angle) * r,
+                    y: Math.sin(angle) * r
+                };
+            })()
         }));
 
         let animId: number;
@@ -155,11 +163,14 @@ export const InteractiveArtodeIcon: React.FC<InteractiveArtodeIconProps> = ({
             ctx.fillStyle = color;
 
             if (isHoveredRef.current) {
-                // Swarm towards mouse
+                // Swarm towards mouse with random offset to prevent "thread" line effect
                 particles.forEach(p => {
-                    const target = mouseRef.current;
-                    const dx = target.x - p.x;
-                    const dy = target.y - p.y;
+                    // Target is mouse position + particle's unique random offset
+                    const tx = mouseRef.current.x + p.swarmOffset.x;
+                    const ty = mouseRef.current.y + p.swarmOffset.y;
+
+                    const dx = tx - p.x;
+                    const dy = ty - p.y;
 
                     p.x += dx * p.speed;
                     p.y += dy * p.speed;
