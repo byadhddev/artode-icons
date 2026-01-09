@@ -27,7 +27,7 @@ export interface InteractiveArtodeIconProps extends ArtodeIconProps {
 export const InteractiveArtodeIcon: React.FC<InteractiveArtodeIconProps> = ({
     path,
     size = 32,
-    color = 'currentColor',
+    color = '#D80018',
     className,
     forceHover = false,
     globalMouse = false,
@@ -36,24 +36,10 @@ export const InteractiveArtodeIcon: React.FC<InteractiveArtodeIconProps> = ({
 }) => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const [internalHover, setInternalHover] = useState(false);
-    const [resolvedColor, setResolvedColor] = useState(color === 'currentColor' ? '#D80018' : color);
     const isHovered = forceHover || internalHover || globalMouse; // Global mouse implies always active tracking
 
     const width = customCanvasSize?.width ?? size;
     const height = customCanvasSize?.height ?? size;
-
-    // Resolve 'currentColor' from the parent element's computed style
-    useEffect(() => {
-        if (color !== 'currentColor') {
-            setResolvedColor(color);
-            return;
-        }
-        const canvas = canvasRef.current;
-        if (!canvas) return;
-
-        const computedColor = window.getComputedStyle(canvas).color;
-        setResolvedColor(computedColor || '#D80018');
-    }, [color, className]);
 
     // Use ref for isHovered to avoid effect re-triggering and hard resets
     const isHoveredRef = useRef(isHovered);
@@ -175,7 +161,7 @@ export const InteractiveArtodeIcon: React.FC<InteractiveArtodeIconProps> = ({
         let animId: number;
         const render = () => {
             ctx.clearRect(0, 0, width, height);
-            ctx.fillStyle = resolvedColor;
+            ctx.fillStyle = color;
 
             if (isHoveredRef.current) {
                 // Swarm towards mouse with random offset to prevent "thread" line effect
@@ -217,7 +203,7 @@ export const InteractiveArtodeIcon: React.FC<InteractiveArtodeIconProps> = ({
         return () => {
             if (animId) cancelAnimationFrame(animId);
         };
-    }, [path, size, resolvedColor, width, height]); // Added width/height to deps to handle resize
+    }, [path, size, color, width, height]); // Added width/height to deps to handle resize
 
     return (
         <canvas
