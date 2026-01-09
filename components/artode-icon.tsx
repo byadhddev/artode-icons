@@ -30,7 +30,7 @@ export interface ArtodeIconProps {
 export const ArtodeIcon: React.FC<ArtodeIconProps> = ({
     path: pathString,
     size = 32,
-    color = '#D80018',
+    color = 'currentColor',
     className,
     forceHover = false,
     drawType = 'fill',
@@ -39,12 +39,30 @@ export const ArtodeIcon: React.FC<ArtodeIconProps> = ({
     customCanvasSize,
     viewBoxSize = 24
 }) => {
+    const canvasRef = useRef<HTMLCanvasElement>(null);
+    const [internalHover, setInternalHover] = React.useState(false);
+    const [resolvedColor, setResolvedColor] = React.useState(color === 'currentColor' ? '#D80018' : color);
+    const isHovered = forceHover || internalHover;
+
+    // Resolve 'currentColor' from the parent element's computed style
+    useEffect(() => {
+        if (color !== 'currentColor') {
+            setResolvedColor(color);
+            return;
+        }
+        const canvas = canvasRef.current;
+        if (!canvas) return;
+
+        const computedColor = window.getComputedStyle(canvas).color;
+        setResolvedColor(computedColor || '#D80018');
+    }, [color, className]);
+
     if (interactive) {
         return (
             <InteractiveArtodeIcon
                 path={pathString}
                 size={size}
-                color={color}
+                color={resolvedColor}
                 className={className}
                 forceHover={forceHover}
                 globalMouse={globalMouse}
@@ -53,10 +71,6 @@ export const ArtodeIcon: React.FC<ArtodeIconProps> = ({
             />
         );
     }
-
-    const canvasRef = useRef<HTMLCanvasElement>(null);
-    const [internalHover, setInternalHover] = React.useState(false);
-    const isHovered = forceHover || internalHover;
 
     useEffect(() => {
         const canvas = canvasRef.current;
@@ -121,7 +135,7 @@ export const ArtodeIcon: React.FC<ArtodeIconProps> = ({
             }
 
             ctx.clearRect(0, 0, size, size);
-            ctx.fillStyle = color;
+            ctx.fillStyle = resolvedColor;
 
             // Optimization: Iterate pixels
             // For small icons (e.g. 32x32), iterating all pixels is cheap ~1024 iterations
@@ -172,7 +186,7 @@ export const ArtodeIcon: React.FC<ArtodeIconProps> = ({
         return () => {
             if (animId) cancelAnimationFrame(animId);
         };
-    }, [pathString, size, color, isHovered, drawType, viewBoxSize]);
+    }, [pathString, size, resolvedColor, isHovered, drawType, viewBoxSize]);
 
     return (
         <canvas
